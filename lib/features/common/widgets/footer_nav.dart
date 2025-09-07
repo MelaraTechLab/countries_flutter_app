@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 const _brand = Color(0xFF3A5683);
 
@@ -17,17 +16,23 @@ class FooterNav extends StatelessWidget {
           height: 64,
           child: Center(
             child: InkWell(
-              onTap: () => context.go('/continents'),
+              onTap: () {
+                Navigator.of(
+                  context,
+                ).pushNamedAndRemoveUntil('/continents', (route) => false);
+              },
               borderRadius: BorderRadius.circular(12),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              child: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
-                  children: const [
+                  children: [
                     Icon(Icons.home, color: Colors.white),
                     SizedBox(height: 2),
-                    Text('Inicio',
-                        style: TextStyle(color: Colors.white, fontSize: 12.5)),
+                    Text(
+                      'Inicio',
+                      style: TextStyle(color: Colors.white, fontSize: 12.5),
+                    ),
                   ],
                 ),
               ),

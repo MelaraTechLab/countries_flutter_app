@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../core/network/graphql_client.dart';
 import '../../../common/widgets/footer_nav.dart';
@@ -27,7 +26,8 @@ class CountriesByContinentPage extends StatefulWidget {
   const CountriesByContinentPage({super.key, required this.continentCode});
 
   @override
-  State<CountriesByContinentPage> createState() => _CountriesByContinentPageState();
+  State<CountriesByContinentPage> createState() =>
+      _CountriesByContinentPageState();
 }
 
 class _CountriesByContinentPageState extends State<CountriesByContinentPage> {
@@ -54,7 +54,9 @@ class _CountriesByContinentPageState extends State<CountriesByContinentPage> {
             variables: {'code': widget.continentCode},
           ),
           builder: (result, {refetch, fetchMore}) {
-            if (result.isLoading) return const Center(child: CircularProgressIndicator());
+            if (result.isLoading) {
+              return const Center(child: CircularProgressIndicator());
+            }
             if (result.hasException) {
               return Center(child: Text('Error: ${result.exception}'));
             }
@@ -85,7 +87,10 @@ class _CountriesByContinentPageState extends State<CountriesByContinentPage> {
                     decoration: InputDecoration(
                       hintText: 'Buscar por nombre o ISO',
                       prefixIcon: const Icon(Icons.search),
-                      contentPadding: const EdgeInsets.symmetric(vertical: 14, horizontal: 12),
+                      contentPadding: const EdgeInsets.symmetric(
+                        vertical: 14,
+                        horizontal: 12,
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(14),
                       ),
@@ -100,8 +105,10 @@ class _CountriesByContinentPageState extends State<CountriesByContinentPage> {
                 // subtítulo
                 const Padding(
                   padding: EdgeInsets.fromLTRB(16, 8, 16, 6),
-                  child: Text('Lista de Países',
-                      style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16)),
+                  child: Text(
+                    'Lista de Países',
+                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                  ),
                 ),
 
                 // lista
@@ -126,7 +133,9 @@ class _CountriesByContinentPageState extends State<CountriesByContinentPage> {
                         iso: iso,
                         continentEs: continentNameEs,
                         languages: langs,
-                        onTap: () => context.go('/country/$iso'),
+                        onTap: () {
+                          Navigator.of(context).pushNamed('/country/$iso');
+                        },
                       );
                     },
                   ),
@@ -203,22 +212,28 @@ class _CountryCard extends StatelessWidget {
                       crossAxisAlignment: WrapCrossAlignment.center,
                       spacing: 6,
                       children: [
-                        Text(name,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 18,
-                              color: Colors.black87,
-                            )),
-                        Text('• ISO: $iso • $continentEs',
-                            style: TextStyle(
-                              color: Colors.black.withOpacity(0.65),
-                              fontSize: 13.5,
-                            )),
+                        Text(
+                          name,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 18,
+                            color: Colors.black87,
+                          ),
+                        ),
+                        Text(
+                          '• ISO: $iso • $continentEs',
+                          style: TextStyle(
+                            color: Colors.black.withOpacity(0.65),
+                            fontSize: 13.5,
+                          ),
+                        ),
                       ],
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      languages.isNotEmpty ? 'Idiomas: $languages' : 'Idiomas: —',
+                      languages.isNotEmpty
+                          ? 'Idiomas: $languages'
+                          : 'Idiomas: —',
                       style: TextStyle(
                         color: Colors.black.withOpacity(0.70),
                         fontSize: 13.5,

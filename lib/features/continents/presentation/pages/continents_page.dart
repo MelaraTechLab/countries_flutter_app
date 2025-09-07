@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../core/network/graphql_client.dart';
 import '../../../common/widgets/footer_nav.dart';
@@ -76,7 +75,10 @@ class _ContinentsPageState extends State<ContinentsPage> {
                     decoration: InputDecoration(
                       hintText: 'Buscar continente',
                       prefixIcon: const Icon(Icons.search),
-                      contentPadding: const EdgeInsets.symmetric(vertical: 14, horizontal: 12),
+                      contentPadding: const EdgeInsets.symmetric(
+                        vertical: 14,
+                        horizontal: 12,
+                      ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(14),
                       ),
@@ -95,7 +97,10 @@ class _ContinentsPageState extends State<ContinentsPage> {
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Continentes',
-                      style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16,
+                      ),
                     ),
                   ),
                 ),
@@ -116,7 +121,9 @@ class _ContinentsPageState extends State<ContinentsPage> {
                         name: name,
                         code: code,
                         count: count,
-                        onTap: () => context.go('/continents/$code'),
+                        onTap: () {
+                          Navigator.of(context).pushNamed('/continents/$code');
+                        },
                       );
                     },
                   ),
@@ -184,12 +191,14 @@ class _ContinentCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(name,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          color: Colors.black87,
-                        )),
+                    Text(
+                      name,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
+                        color: Colors.black87,
+                      ),
+                    ),
                     const SizedBox(height: 2),
                     Text(
                       '$count ${count == 1 ? "país" : "países"}',

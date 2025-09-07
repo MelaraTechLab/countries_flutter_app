@@ -27,7 +27,9 @@ class CountriesPage extends StatelessWidget {
         body: Query(
           options: QueryOptions(document: gql(countriesQuery)),
           builder: (result, {refetch, fetchMore}) {
-            if (result.isLoading) return const Center(child: CircularProgressIndicator());
+            if (result.isLoading) {
+              return const Center(child: CircularProgressIndicator());
+            }
             if (result.hasException) {
               return Center(child: Text('Error: ${result.exception}'));
             }
@@ -37,7 +39,9 @@ class CountriesPage extends StatelessWidget {
               separatorBuilder: (_, __) => const Divider(height: 1),
               itemBuilder: (_, i) {
                 final c = list[i];
-                final langs = ((c['languages'] as List?) ?? []).map((e) => e['name']).join(', ');
+                final langs = ((c['languages'] as List?) ?? [])
+                    .map((e) => e['name'])
+                    .join(', ');
                 return ListTile(
                   leading: Text(c['emoji'] ?? ''),
                   title: Text(c['name'] ?? ''),
