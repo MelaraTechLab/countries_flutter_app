@@ -68,7 +68,7 @@ class CountryDetailPage extends StatelessWidget {
             return ListView(
               padding: const EdgeInsets.fromLTRB(16, 12, 16, 20),
               children: [
-                // encabezado
+                // header
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -113,7 +113,7 @@ class CountryDetailPage extends StatelessWidget {
 
                 const SizedBox(height: 16),
 
-                // tarjeta de pares clave-valor
+                // key-value card section
                 _CardSection(
                   child: Column(
                     children: [
@@ -140,7 +140,7 @@ class CountryDetailPage extends StatelessWidget {
 
                 const SizedBox(height: 12),
 
-                // idiomas oficiales
+                // official languages
                 _CardSection(
                   title: 'Idiomas Oficiales',
                   child: languages.isEmpty
@@ -161,7 +161,7 @@ class CountryDetailPage extends StatelessWidget {
 
                 const SizedBox(height: 16),
 
-                // botón grande volver
+                // large back button
                 SizedBox(
                   height: 52,
                   child: ElevatedButton.icon(
@@ -285,7 +285,7 @@ class _Chip extends StatelessWidget {
   }
 }
 
-// traducción simple de continente
+// simple continent translation
 String _continentEs(String en) {
   switch (en) {
     case 'Europe':

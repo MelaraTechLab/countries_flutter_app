@@ -78,7 +78,7 @@ class _CountriesByContinentPageState extends State<CountriesByContinentPage> {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // buscador
+                // search bar
                 Padding(
                   padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
                   child: TextField(
@@ -102,7 +102,7 @@ class _CountriesByContinentPageState extends State<CountriesByContinentPage> {
                   ),
                 ),
 
-                // subtítulo
+                // subtitle
                 const Padding(
                   padding: EdgeInsets.fromLTRB(16, 8, 16, 6),
                   child: Text(
@@ -111,7 +111,7 @@ class _CountriesByContinentPageState extends State<CountriesByContinentPage> {
                   ),
                 ),
 
-                // lista
+                // list
                 Expanded(
                   child: ListView.separated(
                     padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
@@ -189,7 +189,7 @@ class _CountryCard extends StatelessWidget {
           ),
           child: Row(
             children: [
-              // banderita/emoji
+              // flag/emoji
               Container(
                 width: 44,
                 height: 44,
@@ -202,12 +202,12 @@ class _CountryCard extends StatelessWidget {
               ),
               const SizedBox(width: 12),
 
-              // textos
+              // text blocks
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // línea principal
+                    // main row
                     Wrap(
                       crossAxisAlignment: WrapCrossAlignment.center,
                       spacing: 6,
@@ -252,7 +252,7 @@ class _CountryCard extends StatelessWidget {
   }
 }
 
-// Traducción simple de nombres de continente
+// simple continent name translation
 String _continentEs(String en) {
   switch (en) {
     case 'Europe':

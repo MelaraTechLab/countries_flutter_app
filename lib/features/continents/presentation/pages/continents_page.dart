@@ -11,7 +11,7 @@ const _continentsQuery = r'''
     continents {
       code
       name
-      countries { code }  # solo para contar
+      countries { code }
     }
   }
 ''';
@@ -66,7 +66,7 @@ class _ContinentsPageState extends State<ContinentsPage> {
 
             return Column(
               children: [
-                // buscador
+                // search bar
                 Padding(
                   padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
                   child: TextField(
@@ -90,7 +90,7 @@ class _ContinentsPageState extends State<ContinentsPage> {
                   ),
                 ),
 
-                // subtítulo
+                // subtitle
                 const Padding(
                   padding: EdgeInsets.fromLTRB(16, 8, 16, 6),
                   child: Align(
@@ -105,7 +105,7 @@ class _ContinentsPageState extends State<ContinentsPage> {
                   ),
                 ),
 
-                // lista
+                // list
                 Expanded(
                   child: ListView.separated(
                     padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
@@ -173,7 +173,7 @@ class _ContinentCard extends StatelessWidget {
           ),
           child: Row(
             children: [
-              // icono dentro de “pill”
+              // icon inside pill
               Container(
                 width: 44,
                 height: 44,
@@ -186,7 +186,7 @@ class _ContinentCard extends StatelessWidget {
 
               const SizedBox(width: 12),
 
-              // textos
+              // text blocks
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
